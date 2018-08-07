@@ -1,0 +1,17 @@
+<h1>My Goals</h1>
+<hr>
+
+<ul>
+    <!--Attribute i=index registers position index of each list item-->
+    <div *ngFor='let goal of goals;let i = index'>
+        <li>{{goal.name}}</li>
+
+        <!--Creation of button and pass in attribute (click)='toggleDetails(i) for output property binding-->
+        <button (click)='toggleDetails(i)'>Toggle Details</button>
+        <!--button triggers toggle details function that takes in the index position as argument in component-->
+        <app-goal-details *ngIf="goal.showDescription" [goal]='goal' (isComplete)='completeGoal($event,i)'></app-goal-details>
+    </div>
+    <!--completeGoal function is called and $event variable(placeholder for values emitted with the event) is passed in-->
+</ul>
+<p *ngIf='goals.length > 5'>You have too many goals
+</p>
