@@ -1,0 +1,23 @@
+<h1 class="container-fluid">My Goals</h1>
+<hr>
+
+<div class="container-fluid">
+    <!--Attribute i=index registers position index of each list item-->
+    <div *ngFor='let goal of goals;let i = index'>
+        <div>
+            <h4 id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}} </h4>
+
+            <!--Creation of button and pass in attribute (click)='toggleDetails(i) for output property binding-->
+            <button class="btn btn-primary" (click)='toggleDetails(i)'>Toggle Details</button>
+        </div>
+        <!--button triggers toggle details function that takes in the index position as argument in component-->
+        <app-goal-details class="details" *ngIf="goal.showDescription" [goal]='goal' (isComplete)='deleteGoal($event,i)'></app-goal-details>
+
+
+    </div>
+    <!--Output event addGoal triggering addNewGoal function passing in new goal emitted-->
+    <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
+    <!--completeGoal function is called and $event variable(placeholder for values emitted with the event) is passed in-->
+</div>
+<p *ngIf='goals.length > 5'>You have too many goals
+</p>
