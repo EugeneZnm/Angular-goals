@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/*bootstrap import from node modules*/
+
+@import "~bootstrap/dist/css/bootstrap.css";
+.details {
+    font-size: 15px;
+}
+
+
+/* .goal1 {
+    height: 50px;
+} */
+
+.container-fluid {
+    width: 800px;
+}

@@ -8,5 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+// Angular dynamically creates browser platform
+platformBrowserDynamic().
+// tslint:disable-next-line:max-line-length
+// Angular bootstraps root module which is AppModule (bootstrapping sets up execution environment finding AppComponent from the bootstrap array in the AppModule creating instance of it within its selector tag in index.html file)
+bootstrapModule(AppModule)
   .catch(err => console.log(err));
