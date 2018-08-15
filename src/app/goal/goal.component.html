@@ -1,18 +1,31 @@
+<!DOCTYPE html>
+<ng-progress></ng-progress>
 <h1 class="container-fluid">My Goals</h1>
 <hr>
 
 <div class="container-fluid">
+    <div class="row">
+        <blockquote class="text-center text-lg">
+            <p>{{quote.quote}}</p>
+            <footer><cite>{{quote.author}}</cite></footer>
+        </blockquote>
+
+    </div>
+
     <!--Attribute i=index registers position index of each list item-->
     <div *ngFor='let goal of goals;let i = index'>
         <div>
             <h4 id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}} </h4>
 
-            <!--Creation of button and pass in attribute (click)='toggleDetails(i) for output property binding-->
-            <button class="btn btn-primary" (click)='toggleDetails(i)'>Toggle Details</button>
+            <!--Creation of button and pass in attribute (click)='toggleDetails for output property binding-->
+            <!--VIew Details details calls goToUrl function taking in goal.id trigerring navigation to details component for specific goal-->
+            <button class="btn btn-primary" (click)="goToUrl(goal.id)">view Details</button>
+            <button class="btn btn-danger" (click)="deleteGoal(i)"> Delete Goal </button>
         </div>
         <!--button triggers toggle details function that takes in the index position as argument in component-->
-        <app-goal-details class="details" *ngIf="goal.showDescription" [goal]='goal' (isComplete)='deleteGoal($event,i)'></app-goal-details>
+        <!-- <app-goal-details class="details" *ngIf="goal.showDescription" [goal]='goal' (isComplete)='deleteGoal($event,i)'></app-goal-details> -->
 
+        <!--Addition of quote an author-->
 
     </div>
     <!--Output event addGoal triggering addNewGoal function passing in new goal emitted-->

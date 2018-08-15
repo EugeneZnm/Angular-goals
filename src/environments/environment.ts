@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // creating a new apiUrl property inside environment object to store of API key
+  apiUrl: 'https://talaikis.com/api/quotes/random/',
 };
 
 /*
